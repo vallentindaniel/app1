@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "shopapp-3cb4e": {
+      "hosting": {
+        "app1": [
+          "shopapp-3cb4e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "shopapp-3cb4e"
+  }
+}
