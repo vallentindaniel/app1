@@ -38,7 +38,7 @@
 			<a routerLink="/" [queryParams]="{ category: 'all' }"  class="nav-link"	aria-current="page" >All Products</a>
 		</li>
 
-		<li *ngFor="let category of categories.item | async" class="nav-item">
+		<li *ngFor="let category of categories | async" class="nav-item">
 			<a class="nav-link" 
 				aria-current="page" 
 				routerLink="/" 

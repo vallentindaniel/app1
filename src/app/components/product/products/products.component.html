@@ -1,15 +1,14 @@
 
-<div class="container-fluid" *ngFor="let product of products" >
-    <h3 class="text-center">{{ product.title }}</h3>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-5 row-cols-xxl-5">
-        <div class="col mb-2" *ngFor="let item of product.item | async" >
-            <div class="card" *ngIf="item" >
+<div class="container-fluid" >
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
+        <div class="col mb-2" *ngFor="let product of products | async" >
+            <div class="card" >
                 <img class="card-img w-100 d-block" src="assets/img/ceas.jpg" />
                 <div class="card-img-overlay ">
-                    <h4>{{ item.title  }}</h4>
-                    <p>{{ item.price }} Lei</p>
+                    <h4>{{ product.title  }}</h4>
+                    <p>{{ product.price }} Lei</p>
                 </div>
-                <a  [routerLink]="['/product', item.path ]" class="btn btn-primary stretched-link">Show now</a>
+                <a  [routerLink]="['/product', product.path ]" class="btn btn-primary stretched-link">Show now</a>
             </div>
         </div>
     </div>

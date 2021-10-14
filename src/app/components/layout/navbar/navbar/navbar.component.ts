@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
-import { DocumentData } from 'rxfire/firestore/interfaces';
-import { Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { Observable, Subject } from 'rxjs';
 
 interface Category{
-  item: Observable<DocumentData[]>
+  title: string
 }
 
 @Component({
@@ -15,12 +14,10 @@ interface Category{
 })
 export class NavbarComponent implements OnInit {
 
-  public categories: Category;
+  categories: Observable<Category[]>;
 
-  constructor(firestore: Firestore) { 
-    this.categories ={ 
-      item: collectionData(collection(firestore, 'categories')) 
-    };
+  constructor(private afs: AngularFirestore) { 
+    this.categories = afs.collection<Category>('categories').valueChanges();
   }
 
   ngOnInit(): void {

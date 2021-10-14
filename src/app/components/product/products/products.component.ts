@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
-import { DocumentData } from 'rxfire/firestore/interfaces';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
-interface Product{
+export interface Product{
+  category_id: string,
   title: string,
-  item: Observable<DocumentData[]>
+  description: string,
+  path: string,
+  price: number,
+  quantity: number
 }
 
 
@@ -17,19 +19,12 @@ interface Product{
 })
 export class ProductsComponent implements OnInit {
 
-  products: Product[];
-  private category: any;
+  products: Observable<Product[]>;
 
-  constructor(private firestore: Firestore) { 
-    const discounts = collection(firestore, 'products');
-    const latest = collection(firestore, 'products');
-    const nice = collection(firestore, 'products');
+  constructor(private afs: AngularFirestore) { 
 
-    this.products = [
-      { title: "Discounts", item: collectionData(discounts) },
-      { title: "Latest", item: collectionData(latest) },
-      { title: "Maybe you like", item: collectionData(nice) }
-    ];
+    this.products = afs.collection<Product>('products').valueChanges();
+    
   }
 
   ngOnInit(): void {
