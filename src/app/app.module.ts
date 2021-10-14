@@ -15,6 +15,7 @@ import { LoginComponent } from './components/pages/login/login/login.component';
 import { NavbarComponent } from './components/layout/navbar/navbar/navbar.component';
 import { ProductComponent } from './components/product/product/product.component';
 import { ProductsComponent } from './components/product/products/products.component';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ProductsComponent } from './components/product/products/products.compon
     ReactiveFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule.enablePersistence(),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
