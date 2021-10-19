@@ -14,18 +14,32 @@
                                 <div class="text-center">
                                     <h4 class="text-dark mb-4">Welcome Back!</h4>
                                 </div>
-                                <form class="user">
+                                <form class="user" [formGroup]="form" (ngSubmit)="login()" >
                                     <div class="mb-3">
-                                        <input class="form-control form-control-user" type="email" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" />
+                                        <input class="form-control form-control-user" 
+                                        type="email" 
+                                        aria-describedby="emailHelp" 
+                                        placeholder="Enter Email Address..." 
+                                        name="email"
+                                        formControlName="email" 
+                                        required />
                                     </div>
                                     <div class="mb-3">
-                                        <input class="form-control form-control-user" type="password" placeholder="Password" name="password" />
+                                        <input class="form-control form-control-user" 
+                                        type="password" 
+                                        placeholder="Password" 
+                                        name="password"
+                                        formControlName="password" 
+                                        required />
                                     </div>
                                     <div class="mb-3">
                                         <div class="custom-control custom-checkbox small">
                                             <div class="form-check">
-                                                <input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1" />
-                                                <label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label>
+                                                <input class="form-check-input custom-control-input" 
+                                                type="checkbox" 
+                                                id="formCheck-1" />
+                                                <label class="form-check-label custom-control-label" 
+                                                for="formCheck-1">Remember Me</label>
                                             </div>
                                         </div>
                                     </div>
